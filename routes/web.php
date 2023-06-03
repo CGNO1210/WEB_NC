@@ -38,3 +38,9 @@ Route::get('/blog',function () {
 Route::get('/courses','CoursesController@getAllCourses');
 Route::get('/courses/{cour_name}','CoursesController@getCourse');
 
+
+Route::get('/test',function () {
+    return view('test');
+});
+Route::post('/testupimg','TestController@upimg');
+
