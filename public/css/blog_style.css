@@ -1,0 +1,54 @@
+.main{
+  margin-left: 80px;
+  padding-right: 85px;
+}
+
+.content{
+  display: flex;
+  gap: 88px;
+}
+
+.posts{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.post-item {
+  display: flex;
+  flex-direction: column;
+  border: 1px rgb(199, 199, 199) solid;
+  border-radius: 16px;
+  padding: 26px;
+  gap: 8px;
+  font-size: 16px;
+  flex: 1;
+}
+.post-header{
+  display: flex;
+  justify-content: space-between;
+
+}
+.post-author ,.post-info,.post-action{
+  display: flex;
+  gap: 24px;
+}
+.post-action i{
+  color: #757575;
+  cursor: pointer;
+}
+.post-body{
+  display: flex;
+  gap: 32px;
+}
+.post-info button{
+  background-color: rgb(187, 187, 187);
+  min-width: 50px;
+  border-radius: 50px;
+  border: none;
+}
+
+.advertisement{
+  width: 415px;
+  padding-right: 115px;
+  background-color: aqua;
+}

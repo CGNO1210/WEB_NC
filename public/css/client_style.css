@@ -1,0 +1,275 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* header */
+.wrapper-header {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0px 25px;
+    position: fixed;
+    background-color: white;
+    z-index: 100;
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1);
+    top: 0;
+}
+
+.header h4 {
+    color: #000;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-left: 16px;
+
+}
+
+/* thẻ tìm kiếm */
+.Wrapper-input-search {
+    border: 2px solid #e8e8e8;
+    border-radius: 20px;
+    flex: 1;
+    height: 40px;
+    padding: 0 16px 0 8px;
+    transition: border-color 0.2s ease-in-out;
+    width: 480px;
+    display: flex;
+    align-items: center;
+}
+
+.Wrapper-input-search span {
+    color: gray;
+    font-size: 18px;
+    margin: 5px;
+}
+
+.Wrapper-input-search span:hover {
+    color: black;
+}
+
+.Wrapper-input-search>.input-search {
+    border: none;
+}
+
+.Wrapper-input-search>.input-search:focus {
+    outline: none;
+}
+
+.Wrapper-input-search:focus-within {
+    border-color: black;
+}
+
+.Wrapper-input-search input {
+    width: 100%;
+}
+
+/* hết phần thẻ tìm kiếm */
+.header {
+    display: flex;
+    align-items: center;
+}
+
+.img-f8 {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.login-btn {
+    width: 120px;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 20px;
+    background-color: #f05123;
+    border: solid #fff;
+    color: #fff;
+}
+
+.login-btn a {
+    color: #fff;
+}
+
+.search-box {
+    background: #fff;
+    width: 400px;
+    height: 70px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 15px;
+}
+
+.search-box__btn {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 70px;
+    height: 70px;
+    font-size: 25px;
+    border: none;
+    outline: none;
+}
+
+.search-box__input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    font-size: 30px;
+    outline: none;
+}
+
+/* end header */
+
+
+
+/* footer */
+
+.wrapper-header {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 25px;
+    position: fixed;
+    background-color: white;
+    z-index: 100;
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header h4 {
+    color: #000;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-left: 16px;
+
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    padding-bottom: 8px;
+}
+
+.img-f8 {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.nav-last {
+    background-color: #181821;
+    overflow: hidden;
+    padding: 30px 160px 30px;
+    color: #a9b3bb;
+    position: relative;
+    margin-top: 50px;
+}
+
+.nav-last-topic {
+    display: flex;
+    justify-content: space-around;
+    color: #a9b3bb;
+}
+
+.nav-last-containt {
+    font-size: 0.9rem;
+}
+
+.nav-last-topic .form-a h3 {
+    font-size: 1.1rem;
+    color: #fff;
+    font-weight: 600;
+}
+
+.nav-last-topic .form-a {
+    font-size: 0.9rem;
+    line-height: 2;
+}
+
+.nav-last-topic .form-b h3 {
+    font-size: 1.1rem;
+    color: #fff;
+    font-weight: 600;
+}
+
+.nav-last-topic .form-b {
+    font-size: 0.9rem;
+    line-height: 2;
+}
+
+.nav-last-topic .form-c h3 {
+    font-size: 1.1rem;
+    color: #fff;
+    font-weight: 600;
+}
+
+.nav-last-topic .form-c {
+    font-size: 0.9rem;
+    line-height: 2;
+}
+
+.nav-last-topic .form-d h3 {
+    font-size: 1.1rem;
+    color: #fff;
+    font-weight: 600;
+}
+
+.nav-last-topic .form-d {
+    font-size: 0.9rem;
+    line-height: 2;
+}
+
+/* end footer */
+
+
+
+/* sidebar */
+.wrapper-nav-menu {
+    width: 100px;
+    background-color: #fff;
+    position: fixed;
+    top: 80px;
+    left: 0;
+}
+
+.icon-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.icon-btn {
+    border-radius: 15px;
+    cursor: pointer;
+    width: 70px;
+    height: 70px;
+    border: #fff;
+    background-color: #fff;
+    color: #1a1a1a;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 10px;
+}
+
+.icon-btn:hover {
+    background-color: #e8ebed;
+}
+
+/* end sidebar */
+/* layout */
+.content {
+    margin-top: 90px;
+    min-height: 600px;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
