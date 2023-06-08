@@ -3,6 +3,9 @@
 @section('style')
     <link rel="stylesheet" href="/css/home_style.css">
 @endsection
+@section('sidebar')
+    @include('partials.sidebar')
+@endsection
 @section('content')
 <div class="main">
     {{-- @include('header') --}}
@@ -34,9 +37,9 @@
             <a href="/courses/{{$pro_courses[$i]->slug}}">
                 <div class="courses-item">
                     <div class="course-image">
-                        <img src="{{$pro_courses[$i]->cour_img}}" height="168px" alt="img" />
+                        <img src="{{$pro_courses[$i]->cour_img}}" height="168px" width="298px" alt="img" />
                         {{-- <div class="see-more"><div>Xem khóa học</div></div> --}}
-                        <div class="see-more"><div>Tiếp tục học</div></div>
+                        <div class="see-more"><div>Xem khóa học</div></div>
                     </div>
                     <div class="course-name">{{$pro_courses[$i]->cour_name}}</div>
                     <div class="price">

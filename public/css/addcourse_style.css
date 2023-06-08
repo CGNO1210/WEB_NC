@@ -1,0 +1,9 @@
+.main {
+    margin-left: 100px;
+    display: flex;
+    justify-content: center;
+}
+.form-container{
+    padding-top: 10px;
+    min-width: 400px;
+}

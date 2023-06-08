@@ -14,7 +14,7 @@
             Hòa,
             Quận
             Cầu Giấy, TP. Hà Nội <br>
-            <img src="./DMCA_PROTECTED.png"
+            <img src="/img/DMCA_PROTECTED.png"
                 style="margin-top: 30px;" alt> <br>
         </div>
         <!--Hàng 2-->

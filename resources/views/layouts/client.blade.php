@@ -22,7 +22,7 @@
     </header>
     <div class="main">
         <div class="sidebar">
-            @include('partials.sidebar')
+            @yield('sidebar')
         </div>
         <div class="content">
             @yield('content')

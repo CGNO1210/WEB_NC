@@ -3,6 +3,9 @@
 @section('style')
     <link rel="stylesheet" href="/css/route_style.css">
 @endsection
+@section('sidebar')
+    @include('partials.sidebar')
+@endsection
 @section('content')
 <div class="wrapper-container">
     <div class="title">

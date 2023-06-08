@@ -3,6 +3,9 @@
 @section('style')
     <link rel="stylesheet" href="/css/blog_style.css">
 @endsection
+@section('sidebar')
+    @include('partials.sidebar')
+@endsection
 @section('content')
 <div class="main">
     <div class="title">
@@ -50,7 +53,6 @@
             @endfor
         </div>
         <div class="advertisement">
-            
         </div>
     </div>
 </div>

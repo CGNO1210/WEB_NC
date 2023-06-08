@@ -1,0 +1,15 @@
+.main{
+    margin-left: 80px;
+    display: flex;
+    justify-content: center;
+}
+.table-responsive{
+    min-width: 900px;
+    padding-left: 18px;
+    background-color: #212529;
+    border-radius: 10px;
+}
+.page{
+    display: flex;
+    justify-content: center;
+}

@@ -2,7 +2,9 @@
     <!--Phần đầu-->
     <!--cụm-1-->
     <div class="header">
-        <img class="img-f8" src="/img/f8-logo.png" alt />
+        <a href="/">
+            <img class="img-f8" src="/img/f8-logo.png" alt />
+        </a>
         <h4>Học Lập Trình Để Đi Làm</h4>
     </div>
     <!--cụm-2-->

@@ -1,0 +1,26 @@
+.main {
+    margin-left: 100px;
+    display: flex;
+    justify-content: center;
+}
+.form-container{
+    padding-top: 10px;
+    display: flex;
+    gap: 40px;
+}
+.table-responsive{
+    min-width: 800px;
+    padding-left: 18px;
+    background-color: #212529;
+    border-radius: 10px;
+}
+.add_chapter{
+    display: flex;
+    align-items: center;
+    width: 500px;
+    gap: 24px;
+}
+.page{
+    display: flex;
+    justify-content: center;
+}

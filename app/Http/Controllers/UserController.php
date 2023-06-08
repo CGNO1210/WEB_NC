@@ -84,14 +84,12 @@ class UserController extends Controller
             'login_name'=> $request->input('login_name'),
             'password'=>$request->input('password')
         ])) {
-            if(1){
-                $data = DB::table('users')->select('user_name','login_name')->where('login_name', $request ->input('login_name'))->first();
-                Session()->put('user', $data);
-                return redirect('/');
+            $data = DB::table('users')->select('user_name','login_name','user_isadmin','id')->where('login_name', $request ->input('login_name'))->first();
+            Session()->put('user', $data);
+            if($data->user_isadmin){
+                Session()->put('admin', $data);
             }
-            else{
-                return view('admin');
-            }
+            return redirect('/');
         }
 
         Session()->flash('error','login_name hoặc Password không chính xác');
@@ -124,6 +122,8 @@ class UserController extends Controller
     public function logout()
     {
         Session()->forget('user');
+        if(Session()->has('admin'))
+            Session()->forget('admin');
         return redirect('/');
     }
 }

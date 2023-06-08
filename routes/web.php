@@ -12,18 +12,7 @@ use App\Models\Courses;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/', function () {
-    return view('client.test',[
-        'pro_courses' => Courses::all(),
-        'pro_courses_count' => Courses::all()->count(),
-        'free_courses' => Courses::all(),
-        'free_courses_count' => Courses::all()->count(),
-
-    ]);
-});
-Route::get('/wel', function () {
-    return view('welcome');
-});
+Route::get('/', 'CoursesController@getHomePage');
 Route::get('/login','UserController@getLoginPage');
 Route::post('/login','UserController@loginAction');
 Route::get('/register','UserController@getRegisterPage');
@@ -37,10 +26,37 @@ Route::get('/blog',function () {
 });
 Route::get('/courses','CoursesController@getAllCourses');
 Route::get('/courses/{cour_name}','CoursesController@getCourse');
+Route::post('/courses/{cour_name}','CoursesController@registerCourse');
 
+Route::prefix('/admin')->group(function () {
+    Route::get('/',function () {
+        return view('admin.admin_courses',[
+            'courses' => Courses::paginate(4),
+            'courses_count'=> Courses::all()->count(),
+        ]);
+    });
+    Route::get('/courses', function () {
+        return view('admin.admin_courses');
+    });
+    Route::get('/users', function () {
+        return view('admin.admin_users');
+    });
+    Route::get('/bill', function () {
+        return view('admin.admin_bill');
+    });
+    //course
+    Route::get('/addcourses', 'CoursesController@addcourse');
+    Route::post('/addcourses','CoursesController@createCourse');
+    Route::get('/{course_slug}/edit','CoursesController@editCourse');
+    Route::post('/{course_slug}/edit','CoursesController@updateCourse');
+    //chapter
+    Route::post('/{course_slug}/addchapter','ChapterController@addChapter');
+    Route::get('/{course_slug}/{chapter_slug}/edit','ChapterController@editChapter');
+    Route::post('/{course_slug}/{chapter_slug}/edit','ChapterController@updateChapter');
+    //lesson
+    Route::get('/{course_slug}/{chapter_slug}/addlesson','LessonController@addLesson');
+    Route::post('/{course_slug}/{chapter_slug}/addlesson','LessonController@createLesson');
+    Route::get('/{course_slug}/{chapter_slug}/{lesson_slug}/edit','LessonController@editLesson');
+    Route::post('/{course_slug}/{chapter_slug}/{lesson_slug}/edit','LessonController@updateLesson');
 
-Route::get('/test',function () {
-    return view('test');
 });
-Route::post('/testupimg','TestController@upimg');
-

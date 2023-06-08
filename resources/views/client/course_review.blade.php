@@ -3,6 +3,9 @@
 @section('style')
     <link rel="stylesheet" href="/css/course_detail_style.css">
 @endsection
+@section('sidebar')
+    @include('partials.sidebar')
+@endsection
 @section('content')
 <div class="main">
     <div class="course-content">
@@ -21,7 +24,11 @@
             <img src="{{$data->cour_img}}" alt="">
         </div>
         <h2>Miễn phí</h2>
-        <button><a href="">Đăng kí</a></button>
+        <form action="" method="post">
+            <input type="text" value="{{$data->id}}" name="cour_id" hidden>
+            <input type="text" value="{{Session::get('user')->id}}" name="user_id" hidden>
+            <button type="submit">Đăng kí học</button>
+        </form>
         <div class="action-info">
             <div class="item">
                 <i class="fa fa-users"></i>
