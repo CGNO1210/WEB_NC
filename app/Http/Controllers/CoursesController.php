@@ -6,23 +6,32 @@ use Illuminate\Http\Request;
 use App\Models\Courses;
 use App\Models\Chapter;
 use App\Models\Lesson;
-use App\Models\registerCourse;
+use App\Models\Comment;
+use App\Models\RegisterCourse;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Str;
 
 class CoursesController extends Controller
 {
     function getHomePage () {
+        $user  = Session()->get('user', function() {
+            return 0;
+        });
+        $user_id = 0;
+        if($user) {
+            $user_id = $user->id;
+        }
+        $registerCourses = RegisterCourse::where('user_id',$user_id)->get();
         return view('client.home',[
-            'pro_courses' => Courses::all(),
-            'pro_courses_count' => Courses::all()->count(),
-            'free_courses' => Courses::all(),
-            'free_courses_count' => Courses::all()->count(),
-    
+            'pro_courses' => Courses::where('cour_price','>','0')->get(),
+            'pro_courses_count' => Courses::where('cour_price','>','0')->count(),
+            'free_courses' => Courses::where('cour_price','0')->get(),
+            'free_courses_count' => Courses::where('cour_price','0')->count(),
+            'registerCourses' => $registerCourses,
         ]);
     }
 
-    public function getCourse($cour_slug) {
+    public function get_review_Course($cour_slug) {
         $data = Courses::where('slug',$cour_slug)->get();
         if($data->count())
             return view('client.course_review',[
@@ -55,7 +64,11 @@ class CoursesController extends Controller
     }
     public function editCourse($slug) {
         $course = Courses::where('slug',$slug)->first();
-        $chapters = Chapter::where('cour_id',$course->id)->paginate(4);
+
+        $chapters = Chapter::query()->leftJoin('lesson','chapter.id','lesson.chapter_id')
+                                    ->selectRaw('chapter.id,chapter_name,chapter_slug,COUNT(lesson.chapter_id) as `bai`')
+                                    ->where('chapter.cour_id',$course->id)
+                                    ->groupBy('chapter.id','chapter_name','chapter_slug')->paginate(4);
         return view('admin.courses.edit_course',[
             'course' => $course,
             'chapters' => $chapters
@@ -78,9 +91,33 @@ class CoursesController extends Controller
     }
     public function registerCourse(Request $request)
     {
-        registerCourse::create([
+        
+
+        if($request->input('user_id')==0){
+            return redirect('/login');
+        }
+        RegisterCourse::create([
             'course_id' => $request->input('cour_id'),
             'user_id' => $request->input('user_id'),
+        ]);
+        $cour_name = Courses::where('id',$request->input('cour_id'))->first()->slug;
+        return redirect('/courses/'.$cour_name.'/learn');
+    }
+    public function learnCourse($cour_name,Request $request){
+        $cour = Courses::where('slug',$cour_name)->first();
+        $chapters = Chapter::where('cour_id',$cour->id)->get();
+        $lessons = Lesson::all();
+        if($request->input('lesson_id') == "")
+            $lesson_id = Lesson::where('cour_id',$cour->id)->first()->id;
+        else
+            $lesson_id = $request->input('lesson_id');
+        $comment = Comment::query()->join('users','comments.user_id','users.id')->where('lesson_id',$lesson_id)->get();
+        return view('client.learn',[
+            'cour_name'=> $cour_name,
+            'chapters'=> $chapters,
+            'lessons'=> $lessons,
+            'lesson_id' => $lesson_id,
+            'comments' => $comment
         ]);
     }
 }

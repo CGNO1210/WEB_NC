@@ -3,7 +3,7 @@
         <a href="/">
             <button class="icon-btn">
                 <i class="fa fa-home" style="font-size: 24px"></i>
-                <p class="home">User</p>
+                <p class="home">Home</p>
             </button>
         </a>
         <a href="/admin">

@@ -1,5 +1,7 @@
 @extends('layouts.client')
-
+@section('back')
+    <a href="/" class="btn btn-primary" style="margin-left: 8px">Back</a>
+@endsection
 @section('style')
     <link rel="stylesheet" href="/css/admin_course_style.css">
 @endsection
@@ -14,9 +16,7 @@
                 <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Name course</th>
-                    <th scope="col">Chương</th>
-                    <th scope="col">Bài học</th>
-                    <th scope="col">Tổng thời lượng</th>
+                    <th scope="col">Tổng Số Chương</th>
                     <th scope="col">Thao Tác</th>
                 </tr>
             </thead>
@@ -25,12 +25,12 @@
                 <tr>
                     <td>{{$course->id}}</td>
                     <td>{{$course->cour_name}}</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>
+                    <td>{{$course->chuong}}</td>
+                    <td style="display: flex;gap:10px">
                         <a href="/admin/{{$course->slug}}/edit" class="btn btn-secondary">Edit</a>
-                        <a href="" class="btn btn-danger" >Delete</a>
+                        <form action="">
+                            <button class="btn btn-danger"><a href="#" style="color: white">Delete</a></button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach

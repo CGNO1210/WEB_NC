@@ -6,65 +6,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Str;
 use DB;
 
 class UserController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        return "hello";
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+{   
     public function getLoginPage()
     {
         return view('login');
@@ -84,7 +30,7 @@ class UserController extends Controller
             'login_name'=> $request->input('login_name'),
             'password'=>$request->input('password')
         ])) {
-            $data = DB::table('users')->select('user_name','login_name','user_isadmin','id')->where('login_name', $request ->input('login_name'))->first();
+            $data = User::where('login_name', $request ->input('login_name'))->first();
             Session()->put('user', $data);
             if($data->user_isadmin){
                 Session()->put('admin', $data);
@@ -116,8 +62,11 @@ class UserController extends Controller
             'password' =>  Hash::make($request->input('password')),
             'user_mail' =>  $request->input('user_mail'),
             'user_phone' =>  $request->input('user_phone'),
+            'slug' => Str::slug($request->input('user_name'), '-')
         ]);
-        return 'inserted successfully';
+
+        Session()->flash('success','Đăng ký thành công');
+        return redirect('/login');
     }
     public function logout()
     {
@@ -126,4 +75,22 @@ class UserController extends Controller
             Session()->forget('admin');
         return redirect('/');
     }
+
+    public function editUser($user_name) {
+        return view('edituser');
+    }    
+    public function updateUser($user_name,Request $request) {
+
+        User::where('id', $request->input('id'))->update([
+            'user_name' => $request->input('user_name'),
+            'user_phone' => $request->input('user_phone'),
+            'user_mail' => $request->input('user_mail'),
+            'slug' =>  Str::slug($request->input('user_name'), '-'),
+        ]);
+        $data = User::where('id', Session()->get('user')->id)->first();
+        Session()->put('user', $data);
+        Session()->flash('success','Cập nhật thông tin thành công');
+        return redirect('/');
+    }    
+    
 }

@@ -1,5 +1,7 @@
 @extends('layouts.client')
-
+@section('back')
+    <a href="/admin/{{$name_course}}/{{$name_chapter}}/edit" class="btn btn-primary" style="margin-left: 8px">Back</a>
+@endsection
 @section('style')
     <link rel="stylesheet" href="/css/addcourse_style.css">
 @endsection

@@ -24,7 +24,7 @@ class ChapterController extends Controller
     public function editChapter($slug_course,$slug_chapter) {
         $cour_id = Courses::where('slug' ,$slug_course)->first()->id;
         $chapter = Chapter::where('cour_id', $cour_id)->where('chapter_slug',$slug_chapter)->first();
-        $lessons = Lesson::where('chapter_id',$chapter->id)->paginate(1);
+        $lessons = Lesson::where('chapter_id',$chapter->id)->paginate(5);
         return view('admin.courses.edit_chapter',[
             'name_course' => $slug_course,
             'name_chapter' => $slug_chapter,

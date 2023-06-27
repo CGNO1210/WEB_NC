@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('lesson', function (Blueprint $table) {
             $table->id();
+            $table->integer('cour_id');
             $table->integer('chapter_id');
             $table->string('lesson_name');
-
-            //            $table->foreign('chapter_id')->references('id')->on('chapter');
+            $table->string('lesson_slug');
+            //$table->foreign('chapter_id')->references('id')->on('chapter');
             $table->timestamps();
         });
     }

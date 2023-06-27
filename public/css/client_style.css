@@ -79,13 +79,14 @@
 }
 
 .login-btn {
-    width: 120px;
+    min-width: 120px;
     height: 40px;
     cursor: pointer;
     border-radius: 20px;
     background-color: #f05123;
     border: solid #fff;
     color: #fff;
+    padding: 0 10px;
 }
 
 .login-btn a {
@@ -265,7 +266,7 @@
 /* end sidebar */
 /* layout */
 .content {
-    margin-top: 90px;
+    margin-top: 70px;
     min-height: 600px;
 }
 

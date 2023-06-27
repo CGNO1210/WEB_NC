@@ -23,7 +23,6 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->rememberToken();
             $table->timestamps();
-            
         });
     }
 

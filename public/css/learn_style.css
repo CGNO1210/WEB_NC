@@ -1,0 +1,33 @@
+.main{
+    margin-left: 52px;
+    display: flex;
+}
+.chapters {
+    display: flex;
+    flex-direction: column; 
+    position: fixed;   
+    right: 0;
+}
+.chapter{
+    min-width: 300px;
+}
+.chaptername{
+    background-color: rgb(0, 200, 255);
+    height: 60px;
+}
+.lessons{
+    background-color: lightgreen;
+    display: block
+}
+.lesson{
+    height: 60px;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+.video{
+    width: 1000px;
+}

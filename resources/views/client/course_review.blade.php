@@ -26,7 +26,12 @@
         <h2>Miễn phí</h2>
         <form action="" method="post">
             <input type="text" value="{{$data->id}}" name="cour_id" hidden>
+            @if (Session::has('user'))
             <input type="text" value="{{Session::get('user')->id}}" name="user_id" hidden>
+            @else
+            <input type="text" value="0" name="user_id" hidden>            
+            @endif
+            @csrf
             <button type="submit">Đăng kí học</button>
         </form>
         <div class="action-info">
