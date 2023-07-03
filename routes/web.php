@@ -18,39 +18,23 @@ Route::post('/login','UserController@loginAction');
 Route::get('/register','UserController@getRegisterPage');
 Route::post('/register','UserController@registerAction');
 Route::get('/logout','UserController@logout');
-Route::get('/route',function () {
-    return view('client.route');
-});
-Route::get('/blog',function () {
-    return view('client.blog');
-});
+Route::get('/search','SearchController@search');
+Route::get('/route','HomeController@getRoute');
 Route::get('/courses','CoursesController@getAllCourses');
 Route::get('/courses/{cour_name}','CoursesController@get_review_Course'); //review course
-
+Route::get('/search','SearchController@search');
 Route::middleware(['auth'])->group(function () {
+    Route::get('/deposit', 'DepositController@showDepositForm');
+    Route::post('/deposit', 'DepositController@processDeposit');
     Route::get('/{user_name}/edit','UserController@editUser');
     Route::post('/{user_name}/edit','UserController@updateUser');
+    Route::get('/{user_name}/courses','UserController@myCourses');
     Route::post('/courses/{cour_name}','CoursesController@registerCourse');
     Route::get('/courses/{cour_name}/learn','CoursesController@learnCourse');
     Route::post('/courses/{cour_name}/learn','LessonController@comment');
     Route::prefix('/admin')->group(function () {
-        Route::get('/',function () {
-            $courses = Courses::query()->leftJoin('chapter','courses.id','chapter.cour_id')
-                ->selectRaw('courses.id,cour_name,cour_img,cour_description,cour_price,slug,COUNT(chapter.cour_id) as `chuong`')
-                ->groupBy('courses.id','cour_name','cour_img','cour_description','cour_price','slug')->paginate(4);
-            return view('admin.admin_courses',[
-                'courses' => $courses,  
-            ]);
-        });
-        Route::get('/courses', function () {
-            return view('admin.admin_courses');
-        });
-        Route::get('/users', function () {
-            return view('admin.admin_users');
-        });
-        Route::get('/bill', function () {
-            return view('admin.admin_bill');
-        });
+        Route::get('/','HomeController@getHome');
+        Route::get('/users', 'HomeController@loadUser');
         //course
         Route::get('/addcourses', 'CoursesController@addcourse');
         Route::post('/addcourses','CoursesController@createCourse');
@@ -66,4 +50,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/{course_slug}/{chapter_slug}/{lesson_slug}/edit','LessonController@editLesson');
         Route::post('/{course_slug}/{chapter_slug}/{lesson_slug}/edit','LessonController@updateLesson');
     });
+    Route::delete('/deleteLesson','Lessoncontroller@deleteLesson');
+    Route::delete('/deleteChapter','Chaptercontroller@deleteChapter');
+    Route::delete('/deleteCourse','Coursescontroller@deleteCourse');
+    Route::delete('/deleteUser','Usercontroller@deleteUser');
 });

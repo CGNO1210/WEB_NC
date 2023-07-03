@@ -1,5 +1,7 @@
 @extends('layouts.client')
-
+@section('back')
+    <a href="/" class="btn btn-primary" style="margin-left: 8px">Back</a>
+@endsection
 @section('style')
     <link rel="stylesheet" href="/css/learn_style.css">
 @endsection
@@ -9,9 +11,12 @@
 @section('content')
     <div class="main">
         <div class="content">
+            @if ($lesson_id)
             <div class="video">
-                <img src="/img/video/HTML_CSS_Pro.png" alt="">
-                
+                <video src="/video/{{$lesson_video}}" width="640" height="360" controls autoplay></video>
+            </div>
+            <div class="description">
+                Mô tả: {{$lesson_description}}
             </div>
             <div class="comment">
                 <div class="writecomment">
@@ -34,25 +39,30 @@
                     </ul>
                 </div>
             </div>
+            @endif
         </div>
-        <div class="chapters">
-            <h4>Danh sách bài học</h4>
-            @foreach ($chapters as $chapter)
-            <div class="chapter">
-                <div class="chaptername">{{$chapter->chapter_name}}</div>
-                <div class="lessons">
-                    @foreach ($lessons as $lesson)
-                    @if ($lesson->chapter_id == $chapter->id)
-                        <form action="">
-                            <input type="text" hidden value="{{$lesson->id}}" name="lesson_id">
-                            <button><div class="lesson">{{$lesson->lesson_name}}</div></button>
-                        </form>
-                    @endif
-                @endforeach
+        @if ($chapters)
+            <div class="chapters">
+                <h4>Danh sách bài học</h4>
+                @foreach ($chapters as $chapter)
+                <div class="chapter">
+                    <div class="chaptername">{{$chapter->chapter_name}}</div>
+                    <div class="lessons">
+                        @foreach ($lessons as $lesson)
+                        @if ($lesson->chapter_id == $chapter->id)
+                            <form action="">
+                                <input type="text" hidden value="{{$lesson->id}}" name="lesson_id">
+                                <button class="btn_lesson"><div class="lesson">{{$lesson->lesson_name}}</div></button>
+                            </form>
+                        @endif
+                    @endforeach
+                    </div>
                 </div>
+                @endforeach
             </div>
-            @endforeach
-        </div>
+        @else
+            Đang cập nhật chương
+        @endif
     </div>
     <script src="/js/learn.js"></script>
 @endsection

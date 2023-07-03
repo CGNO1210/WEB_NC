@@ -27,7 +27,7 @@
         <label for="exampleInputPassword1" class="form-label">Course Image</label>
         {{-- <input type="file" name="fileTest"> --}}
         <div class="course_img mb-4">
-          <img src="{{$course->cour_img}}" width="325px" height="180px" style="border-radius: 10px" alt="">
+          <img src="/img/{{$course->cour_img}}" width="325px" height="180px" style="border-radius: 10px" alt="">
           {{-- <input type="text" value="{{$course->slug.'.'}}" hidden name="old_cour_img"> --}}
         </div>
         <input type="file" class="form-control" id="formFile" name="cour_img">
@@ -63,7 +63,7 @@
                       <td>{{$chapter->bai}}</td>
                       <td>
                           <a href="/admin/{{$course->slug}}/{{$chapter->chapter_slug}}/edit" class="btn btn-secondary">Edit</a>
-                          <a href="" class="btn btn-danger" >Delete</a>
+                          <a href="" class="btn btn-danger" onclick="Delete({{$chapter->id}},'/deleteChapter')">Delete</a>
                       </td>
                   </tr>
                   @endforeach
@@ -75,4 +75,6 @@
     </div>
     </div>
   </div>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+  <script src="/js/main.js"></script>
 @endsection

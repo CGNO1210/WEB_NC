@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('user_name');
             $table->string('user_phone');
             $table->string('user_mail');
+            $table->float('user_deposit')->default('0');
             $table->boolean("user_isadmin")->default(false);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('slug')->unique();

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('cour_name')->unique();
             $table->string('cour_img');
-            $table->string('cour_description');
+            $table->text('cour_description');
             $table->string('cour_price');
             $table->string('slug');
             $table->timestamps();

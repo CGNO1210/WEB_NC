@@ -11,8 +11,10 @@
     <div>
         <div class="Wrapper-input-search">
             <span><i class="fa fa-search"></i></span>
-            <input type="text" class="input-search"
+            <form action="/search" method="get">
+                <input type="text" class="input-search" name="search"
                 placeholder="Tìm kiếm khóa học, bài viết, video..." />
+            </form>
         </div>
     </div>
 
@@ -24,8 +26,12 @@
                 Welcome {{ Session::get('user')->user_name}}
             </button>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="/">My Courses</a></li>
+                <li><a class="dropdown-item" href="/{{ Session::get('user')->slug}}/courses">My Courses</a></li>
                 <li><a class="dropdown-item" href="/{{ Session::get('user')->slug}}/edit">Edit profile</a></li>
+                <li>
+                    <div class="dropdown-item">Số dư: {{Session::get('user')->user_deposit}} VND
+                    <a class="btn btn-primary" href="/deposit">+</a></div> 
+                </li>
                 <div class="dropdown-divider"></div>
                 <li><a class="dropdown-item" href="/logout">Logout</a></li>
             </ul>

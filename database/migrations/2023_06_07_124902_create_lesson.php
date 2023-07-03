@@ -17,6 +17,8 @@ return new class extends Migration
             $table->integer('chapter_id');
             $table->string('lesson_name');
             $table->string('lesson_slug');
+            $table->text('lesson_description');
+            $table->string('lesson_video');
             //$table->foreign('chapter_id')->references('id')->on('chapter');
             $table->timestamps();
         });

@@ -1,5 +1,7 @@
 @extends('layouts.client')
-
+@section('back')
+    <a href="/" class="btn btn-primary" style="margin-left: 8px">Back</a>
+@endsection
 @section('style')
     <link rel="stylesheet" href="/css/course_detail_style.css">
 @endsection
@@ -21,7 +23,7 @@
     </div>
     <div class="course-action">
         <div class="course-review">
-            <img src="{{$data->cour_img}}" alt="">
+            <img src="/img/{{$data->cour_img}}" alt="">
         </div>
         <h2>Miễn phí</h2>
         <form action="" method="post">
@@ -32,7 +34,11 @@
             <input type="text" value="0" name="user_id" hidden>            
             @endif
             @csrf
-            <button type="submit">Đăng kí học</button>
+            @if ($data->cour_price == 0)
+                <button type="submit">Đăng kí học</button>
+            @else 
+                <button type="submit">Mua khóa học</button>
+            @endif
         </form>
         <div class="action-info">
             <div class="item">

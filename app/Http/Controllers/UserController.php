@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
+use App\Models\RegisterCourse;
+use App\Models\Courses;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -92,5 +95,37 @@ class UserController extends Controller
         Session()->flash('success','Cập nhật thông tin thành công');
         return redirect('/');
     }    
-    
+    public function myCourses($user_name) {
+        $user  = Session()->get('user', function() {
+            return 0;
+        });
+        $user_id = 0;
+        if($user) {
+            $user_id = $user->id;
+        }
+        $registerCourses = RegisterCourse::where('user_id',$user_id)->get();
+        return view('client.mycourses',[
+            'pro_courses' => Courses::where('cour_price','>','0')->get(),
+            'pro_courses_count' => Courses::where('cour_price','>','0')->count(),
+            'free_courses' => Courses::where('cour_price','0')->get(),
+            'free_courses_count' => Courses::where('cour_price','0')->count(),
+            'registerCourses' => $registerCourses,
+        ]);
+    }
+    public function deleteUser(Request $request) {
+        $User = User::where('id',$request->input('id'))->first();
+        if($User){
+            if($User->delete()){
+                return response()->json([
+                    'error'=>'false',
+                    'message'=>'Xóa User thành công'
+                ]);
+            }
+            return response()->json([
+                'error'=>'true',
+                'message'=>'Xóa User KHÔNG thành công'
+            ]);
+        }
+    }
+
 }

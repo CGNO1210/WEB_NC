@@ -18,11 +18,5 @@
                 <p>Users</p>
             </button>
         </a>
-        <a href="/admin/bill">
-            <button class="icon-btn">
-                <i class="fa fa-lightbulb-o" style="font-size: 24px"></i>
-                <p>Bill</p>
-            </button>
-        </a>
     </div>
 </div>

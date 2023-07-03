@@ -15,6 +15,8 @@ class Lesson extends Model
         'cour_id',
         'chapter_id',
         'lesson_name',
-        'lesson_slug'
+        'lesson_slug',
+        'lesson_description',
+        'lesson_video'
     ];
 }

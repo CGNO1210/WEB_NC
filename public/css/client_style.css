@@ -50,19 +50,18 @@
     color: black;
 }
 
-.Wrapper-input-search>.input-search {
+.Wrapper-input-search .input-search {
     border: none;
 }
 
-.Wrapper-input-search>.input-search:focus {
+.Wrapper-input-search .input-search:focus {
     outline: none;
 }
 
 .Wrapper-input-search:focus-within {
     border-color: black;
 }
-
-.Wrapper-input-search input {
+form,.input-search {
     width: 100%;
 }
 

@@ -29,11 +29,5 @@
                 <p>Học</p>
             </button>
         </a>
-        <a href="/blog">
-            <button class="icon-btn">
-                <i class="fa fa-newspaper-o" style="font-size: 24px"></i>
-                <p>Blog</p>
-            </button>
-        </a>
     </div>
 </div>

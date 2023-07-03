@@ -37,7 +37,7 @@
                       <td>0</td>
                       <td>
                           <a href="/admin/{{$name_course}}/{{$name_chapter}}/{{$lesson->lesson_slug}}/edit" class="btn btn-secondary">Edit</a>
-                          <a href="" class="btn btn-danger" >Delete</a>
+                          <a href="" class="btn btn-danger" onclick="Delete({{$lesson->id}},'/deleteLesson')">Delete</a>
                       </td>
                   </tr>
                   @endforeach
@@ -49,4 +49,6 @@
         </div>
     </div>
   </div>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+  <script src="/js/main.js"></script>
 @endsection

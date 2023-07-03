@@ -1,5 +1,7 @@
 @extends('layouts.client')
-
+@section('back')
+    <a href="/" class="btn btn-primary" style="margin-left: 8px">Back</a>
+@endsection
 @section('style')
     <link rel="stylesheet" href="/css/route_style.css">
 @endsection

@@ -15,29 +15,34 @@
             <thead>
                 <tr>
                     <th scope="col">Id</th>
-                    <th scope="col">Name course</th>
-                    <th scope="col">Chương</th>
-                    <th scope="col">Bài học</th>
-                    <th scope="col">Tổng thời lượng</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">SDT</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Tài khoản</th>
+                    <th scope="col">Admin</th>
                     <th scope="col">Thao Tác</th>
                 </tr>
             </thead>
             <tbody>
-                @for ($i = 0; $i < 7; $i++)
+                @foreach ($users as $user)
                 <tr>
-                    <td>asa</td>
-                    <td>asdasd</td>
-                    <td>sdkksdn</td>
-                    <td>qqpoqal</td>
-                    <td>vnlxz</td>
+                    <td>{{$user->id}}</td>
+                    <td>{{$user->user_name}}</td>
+                    <td>{{$user->user_phone}}</td>
+                    <td>{{$user->user_mail}}</td>
+                    <td>{{$user->user_deposit}} VND</td>
+                    <td>{{$user->user_isadmin}}</td>        
                     <td>
-                        <a href="" class="btn btn-secondary">Edit</a>
-                        <a href="" class="btn btn-danger" >Delete</a>
+                        <a href="" class="btn btn-danger" onclick="Delete({{$user->id}},'/deleteUser')">Delete</a>
                     </td>
                 </tr>
-                @endfor
+                @endforeach
             </tbody>
         </table>
     </div>
-</div>
+    <div class="page mt-4">
+        {{$users->links('pagination::bootstrap-4')}}
+    </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="/js/main.js"></script>
 @endsection
